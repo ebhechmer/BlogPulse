@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BlogPulse - Generate Tweets</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Enter Blog Post Link</h1>
+    <form id="blogForm" action="/.netlify/functions/generateTweets" method="post">
+        <label for="blogLink">Blog Post Link:</label><br>
+        <input type="text" id="blogLink" name="blogLink" required><br><br>
+        <input type="submit" value="Generate Tweets">
+    </form>
+</body>
+</html>

@@ -1,13 +1,11 @@
 import openai
-from dotenv import load_dotenv
 import sys
 import os
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from src.extract_content import extract_content
 from src.post_tweet import post_tweet
-# from src import extract_content, post_tweet
-load_dotenv()
-OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')
+from src.config import OPENAI_API_KEY
+
 client = openai.Client(api_key=OPENAI_API_KEY)
 
 def generate_tweets(content, blog_link):
