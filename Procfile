@@ -1,1 +1,1 @@
-web: python src/post_tweet.py
+web: python src/app.py
