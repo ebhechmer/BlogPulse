@@ -1,6 +1,8 @@
 from flask import Flask, request
 import os
-from .post_tweet import post_tweet  # Import your tweet function from post_tweet.py
+import sys
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+from src.post_tweet import post_tweet
 
 app = Flask(__name__)
 

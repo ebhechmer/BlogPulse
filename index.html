@@ -8,10 +8,35 @@
 </head>
 <body>
     <h1>Enter Blog Post Link</h1>
-    <form id="blogForm" action="/.netlify/functions/generateTweets" method="post">
+    <form id="blogForm">
         <label for="blogLink">Blog Post Link:</label><br>
         <input type="text" id="blogLink" name="blogLink" required><br><br>
         <input type="submit" value="Generate Tweets">
     </form>
+
+    <div id="result"></div>
+
+    <script>
+        document.getElementById("blogForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            const blogLink = document.getElementById("blogLink").value;
+
+            fetch("https://blogpulse.herokuapp.com/post_tweet", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/x-www-form-urlencoded"
+                },
+                body: `blogLink=${encodeURIComponent(blogLink)}`
+            })
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById("result").innerText = data;
+            })
+            .catch(error => {
+                document.getElementById("result").innerText = "An error occurred: " + error;
+            });
+        });
+    </script>
 </body>
 </html>
